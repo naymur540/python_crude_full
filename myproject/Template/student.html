@@ -1,0 +1,59 @@
+{% extends 'master.html' %}
+
+  {% block title %}
+    Student List
+  {% endblock title %}
+
+{% block content %}
+   <h2>Student List</h2>
+
+  <a href="{% url 'studentcreate' %}" class="btn btn-primary mb-3">Add New Student</a>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Department</th>
+        <th>Mobile</th>
+        <th>Age</th>
+        <th>DOB</th>
+        <th>Address</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in students %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ s.StudentName }}</td>
+        <td>{{ s.StudentId }}</td>
+        <td>{{ s.Department }}</td>
+        <td>{{ s.Mobile }}</td>
+        <td>{{ s.Age }}</td>
+        <td>{{ s.Date_of_Birth }}</td>
+        <td>{{ s.Address }}</td>
+
+        <td>
+          <a href="{% url 'studentview' s.id %}" class="btn btn-sm btn-info">View</a>
+          <a href="{% url 'studentedit' s.id %}" class="btn btn-sm btn-warning">Edit</a>
+          <a href="{% url 'studentdelete' s.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?');">Delete</a>
+          
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="8" class="text-center">No ss found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
+  
+
+
+
+ 
+

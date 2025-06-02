@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+{% block title %}Student Details{% endblock title %}
+{% block content %}
+
+<div class="container mt-4">
+  <div class="card shadow rounded-4 border-0">
+    <div class="card-header bg-primary text-white rounded-top-4">
+      <h4 class="mb-0">Student Details</h4>
+    </div>
+    <div class="card-body p-4">
+      <dl class="row mb-0">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{ student.StudentName }}</dd>
+
+        <dt class="col-sm-3">Student ID</dt>
+        <dd class="col-sm-9">{{ student.StudentId }}</dd>
+
+        <dt class="col-sm-3">Department</dt>
+        <dd class="col-sm-9">{{ student.Department }}</dd>
+
+        <dt class="col-sm-3">Mobile</dt>
+        <dd class="col-sm-9">{{ student.Mobile }}</dd>
+
+        <dt class="col-sm-3">Age</dt>
+        <dd class="col-sm-9">{{ student.Age }}</dd>
+
+        <dt class="col-sm-3">Date of Birth</dt>
+        <dd class="col-sm-9">{{ student.Date_of_Birth|date:"Y-m-d" }}</dd>
+
+        <dt class="col-sm-3">Address</dt>
+        <dd class="col-sm-9">{{ student.Address }}</dd>
+
+      </dl>
+    </div>
+    <div class="card-footer text-end bg-light rounded-bottom-4">
+      <a href="{% url 'student' %}" class="btn btn-secondary me-2">Back</a>
+      <a href="{% url 'studentedit' student.id %}" class="btn btn-warning me-2">Edit</a>
+      <a href="{% url 'studentdelete' student.id %}" class="btn btn-danger"
+         onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "master.html" %}
+{% block title %}Add student{% endblock title %}
+{% block content %}
+  <h2>{{ student.StudentName|default:"Add New Student" }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="StudentName" class="form-label">Student Name</label>
+      <input type="text" class="form-control" id="StudentName" name="StudentName" value="{{ student.StudentName|default:'' }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="StudentId" class="form-label">Student ID</label>
+      <input type="text" class="form-control" id="StudentId" name="StudentId" value="{{ student.StudentId|default:'' }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="Department" class="form-label">Department</label>
+      <input type="text" class="form-control" id="Department" name="Department" value="{{ student.Department|default:'' }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="Mobile" class="form-label">Mobile</label>
+      <input type="text" class="form-control" id="Mobile" name="Mobile" value="{{ student.Mobile|default:'' }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="Date_of_Birth" class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" id="Date_of_Birth" name="Date_of_Birth" 
+       value="{{ student.Date_of_Birth|date:'Y-m-d' }}">
+    </div>
+    <div class="mb-3">
+      <label for="AGE" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" name="Age" value="{{ student.Age|default:'' }}">
+    </div>
+    <div class="mb-3">
+  <label for="address" class="form-label">Address</label>
+  <textarea class="form-control" id="Address" name="Address">{{ student.Address|default:'' }}</textarea>
+   </div>
+
+
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'student' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock content %}
+
+
+
